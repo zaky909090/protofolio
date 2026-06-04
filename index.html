@@ -7,12 +7,13 @@
 
 <style>
 :root {
-    --bg: #f5f7fb;
+    --bg: #f4f7fb;
     --text: #222;
-    --card: #ffffff;
-    --primary: #007bff;
-    --dark: #121212;
-    --dark-card: #1e1e1e;
+    --card: #fff;
+    --primary: #4f46e5;
+    --accent: #00c6ff;
+    --dark: #0f0f0f;
+    --dark-card: #1c1c1c;
 }
 
 /* RESET */
@@ -20,7 +21,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', sans-serif;
+    font-family: "Segoe UI", sans-serif;
+    scroll-behavior: smooth;
 }
 
 body {
@@ -39,7 +41,8 @@ header {
     position: fixed;
     top: 0;
     width: 100%;
-    background: #111;
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(10px);
     color: white;
     display: flex;
     justify-content: space-between;
@@ -50,24 +53,34 @@ header {
 
 .logo {
     font-weight: bold;
-    font-size: 18px;
 }
 
 /* NAV */
 nav {
     display: flex;
-    gap: 15px;
+    gap: 18px;
 }
 
 nav a {
     color: white;
     text-decoration: none;
     font-size: 14px;
-    transition: 0.2s;
+    position: relative;
 }
 
-nav a:hover {
-    color: #00c6ff;
+nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0;
+    height: 2px;
+    background: var(--accent);
+    transition: 0.3s;
+}
+
+nav a:hover::after {
+    width: 100%;
 }
 
 /* BUTTON */
@@ -75,8 +88,8 @@ button {
     background: var(--primary);
     color: white;
     border: none;
-    padding: 6px 10px;
-    border-radius: 6px;
+    padding: 7px 10px;
+    border-radius: 8px;
     cursor: pointer;
 }
 
@@ -90,51 +103,57 @@ button {
     align-items: center;
     text-align: center;
     padding: 20px;
-    background: linear-gradient(135deg,#007bff,#00c6ff);
+    background: linear-gradient(135deg, var(--primary), var(--accent));
     color: white;
 }
 
 .hero img {
-    width: 140px;
-    height: 140px;
-    border-radius: 20px;
+    width: 150px;
+    height: 150px;
+    border-radius: 18px;
     border: 4px solid white;
     object-fit: cover;
     margin-bottom: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
 }
 
 .hero h1 {
-    font-size: 26px;
+    font-size: 30px;
 }
 
 .hero span {
     color: yellow;
 }
 
+.hero p {
+    opacity: 0.9;
+}
+
 /* SECTION */
 section {
-    padding: 70px 20px;
+    padding: 80px 20px;
     text-align: center;
 }
 
 h2 {
-    margin-bottom: 20px;
+    margin-bottom: 25px;
+    font-size: 26px;
 }
 
 /* SKILLS */
 .skills {
-    max-width: 600px;
+    max-width: 650px;
     margin: auto;
 }
 
 .skill {
-    margin: 15px 0;
+    margin: 18px 0;
     text-align: left;
 }
 
 .bar {
     background: #ddd;
-    height: 10px;
+    height: 12px;
     border-radius: 20px;
     overflow: hidden;
 }
@@ -142,15 +161,15 @@ h2 {
 .fill {
     height: 100%;
     width: 0;
-    background: var(--primary);
-    transition: 1s;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    transition: 1.2s ease;
 }
 
 /* PROJECT */
 .projects {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 18px;
     max-width: 1000px;
     margin: auto;
 }
@@ -158,17 +177,17 @@ h2 {
 .card {
     background: var(--card);
     padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border-radius: 14px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
     transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-6px);
 }
 
 body.dark .card {
     background: var(--dark-card);
-}
-
-.card:hover {
-    transform: translateY(-5px);
 }
 
 /* CONTACT */
@@ -177,11 +196,11 @@ body.dark .card {
     margin: auto;
 }
 
-/* REVEAL ANIMATION */
+/* ANIMATION */
 .reveal {
     opacity: 0;
     transform: translateY(40px);
-    transition: 0.7s;
+    transition: 0.8s ease;
 }
 
 .reveal.active {
@@ -194,34 +213,23 @@ footer {
     background: #111;
     color: white;
     text-align: center;
-    padding: 15px;
-    margin-top: 20px;
+    padding: 18px;
 }
 
-/* RESPONSIVE */
+/* MOBILE */
 @media (max-width: 768px) {
 
     nav {
         display: none;
     }
 
-    header {
-        justify-content: space-between;
-    }
-
     .hero h1 {
-        font-size: 22px;
+        font-size: 24px;
     }
 
     .hero img {
         width: 120px;
         height: 120px;
-    }
-}
-
-@media (max-width: 480px) {
-    section {
-        padding: 50px 15px;
     }
 }
 </style>
@@ -230,13 +238,13 @@ footer {
 <body>
 
 <header>
-    <div class="logo">Portofolio</div>
+    <div class="logo">Zaky Portfolio</div>
 
-    <nav id="nav">
+    <nav>
         <a href="#home">Home</a>
         <a href="#about">Tentang</a>
         <a href="#skills">Skill</a>
-        <a href="#projects">Projek</a>
+        <a href="#projects">Project</a>
         <a href="#contact">Kontak</a>
     </nav>
 
@@ -245,7 +253,7 @@ footer {
 
 <!-- HERO -->
 <section class="hero" id="home">
-    <img src="foto/foto profil.jpeg" alt="profil">
+    <img src="foto/foto profil.jpeg" alt="">
     <h1>Halo, Saya <span>Zaky</span></h1>
     <p>Web Developer | Student</p>
 </section>
@@ -253,7 +261,10 @@ footer {
 <!-- ABOUT -->
 <section id="about" class="reveal">
     <h2>Tentang Saya</h2>
-    <p>Saya adalah pelajar SMK yang fokus belajar Web Development (HTML, CSS, JS, PHP).</p>
+    <p>
+        Saya adalah pelajar SMK yang fokus belajar Web Development,
+        suka membuat website modern dan responsive.
+    </p>
 </section>
 
 <!-- SKILLS -->
@@ -274,12 +285,12 @@ footer {
 
         <div class="skill">
             <span>JavaScript</span>
-            <div class="bar"><div class="fill" data="60"></div></div>
+            <div class="bar"><div class="fill" data="65"></div></div>
         </div>
 
         <div class="skill">
             <span>PHP</span>
-            <div class="bar"><div class="fill" data="55"></div></div>
+            <div class="bar"><div class="fill" data="60"></div></div>
         </div>
 
     </div>
@@ -298,17 +309,17 @@ footer {
 
         <div class="card">
             <h3>Travel Website</h3>
-            <p>Landing page wisata</p>
+            <p>Landing page modern</p>
         </div>
 
         <div class="card">
             <h3>Kas Kelas</h3>
-            <p>Manajemen keuangan kelas</p>
+            <p>Manajemen keuangan</p>
         </div>
 
         <div class="card">
             <h3>Finance App</h3>
-            <p>Sistem keuangan sederhana</p>
+            <p>Sistem sederhana</p>
         </div>
 
     </div>
@@ -326,12 +337,13 @@ footer {
 </footer>
 
 <script>
+
 // DARK MODE
 function toggleDark(){
     document.body.classList.toggle("dark");
 }
 
-// REVEAL
+// REVEAL ANIMATION
 window.addEventListener("scroll", () => {
     document.querySelectorAll(".reveal").forEach(el => {
         if(el.getBoundingClientRect().top < window.innerHeight - 80){
@@ -348,6 +360,7 @@ window.addEventListener("scroll", () => {
         }
     });
 });
+
 </script>
 
 </body>
