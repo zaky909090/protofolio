@@ -1,11 +1,21 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portofolio | Zaky</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portofolio | Zaky</title>
 
 <style>
+:root {
+    --bg: #f5f7fb;
+    --text: #222;
+    --card: #ffffff;
+    --primary: #007bff;
+    --dark: #121212;
+    --dark-card: #1e1e1e;
+}
+
+/* RESET */
 * {
     margin: 0;
     padding: 0;
@@ -13,15 +23,14 @@
     font-family: 'Segoe UI', sans-serif;
 }
 
-/* BODY */
 body {
-    background: #f4f6f8;
-    color: #333;
+    background: var(--bg);
+    color: var(--text);
     transition: 0.3s;
 }
 
 body.dark {
-    background: #121212;
+    background: var(--dark);
     color: #eee;
 }
 
@@ -30,42 +39,57 @@ header {
     position: fixed;
     top: 0;
     width: 100%;
-    background: #1e1e1e;
+    background: #111;
     color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 12px 20px;
+    padding: 14px 20px;
     z-index: 1000;
-    flex-wrap: wrap;
-    gap: 10px;
 }
 
-header nav {
+.logo {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* NAV */
+nav {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 8px;
+    gap: 15px;
 }
 
-header nav a {
+nav a {
     color: white;
     text-decoration: none;
     font-size: 14px;
-    padding: 5px 8px;
+    transition: 0.2s;
 }
 
-header button {
-    padding: 6px 10px;
+nav a:hover {
+    color: #00c6ff;
+}
+
+/* BUTTON */
+button {
+    background: var(--primary);
+    color: white;
     border: none;
+    padding: 6px 10px;
+    border-radius: 6px;
     cursor: pointer;
 }
 
 /* HERO */
 .hero {
-    margin-top: 90px;
+    margin-top: 80px;
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    padding: 60px 15px;
+    padding: 20px;
     background: linear-gradient(135deg,#007bff,#00c6ff);
     color: white;
 }
@@ -73,77 +97,91 @@ header button {
 .hero img {
     width: 140px;
     height: 140px;
-    border-radius: 12px;
+    border-radius: 20px;
     border: 4px solid white;
     object-fit: cover;
+    margin-bottom: 15px;
 }
 
 .hero h1 {
-    font-size: 22px;
-    margin-top: 10px;
+    font-size: 26px;
 }
 
 .hero span {
     color: yellow;
 }
 
-.hero p {
-    font-size: 14px;
-}
-
 /* SECTION */
-.section {
-    padding: 50px 20px;
+section {
+    padding: 70px 20px;
     text-align: center;
 }
 
+h2 {
+    margin-bottom: 20px;
+}
+
 /* SKILLS */
+.skills {
+    max-width: 600px;
+    margin: auto;
+}
+
 .skill {
-    max-width: 90%;
-    margin: 15px auto;
+    margin: 15px 0;
     text-align: left;
 }
 
 .bar {
     background: #ddd;
-    height: 12px;
-    border-radius: 6px;
+    height: 10px;
+    border-radius: 20px;
     overflow: hidden;
 }
 
 .fill {
     height: 100%;
     width: 0;
-    background: #007bff;
+    background: var(--primary);
     transition: 1s;
 }
 
 /* PROJECT */
 .projects {
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 15px;
-    flex-wrap: wrap;
+    max-width: 1000px;
+    margin: auto;
 }
 
-.project-card {
-    background: white;
-    padding: 15px;
-    width: 100%;
-    max-width: 260px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+.card {
+    background: var(--card);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: 0.3s;
 }
 
-body.dark .project-card {
-    background: #1f1f1f;
+body.dark .card {
+    background: var(--dark-card);
 }
 
-/* REVEAL */
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* CONTACT */
+.contact {
+    max-width: 500px;
+    margin: auto;
+}
+
+/* REVEAL ANIMATION */
 .reveal {
     opacity: 0;
     transform: translateY(40px);
-    transition: 0.8s;
+    transition: 0.7s;
 }
 
 .reveal.active {
@@ -153,157 +191,160 @@ body.dark .project-card {
 
 /* FOOTER */
 footer {
-    background: #1e1e1e;
+    background: #111;
     color: white;
     text-align: center;
     padding: 15px;
-    font-size: 13px;
+    margin-top: 20px;
 }
 
-/* RESPONSIVE HP */
-@media (max-width: 600px) {
+/* RESPONSIVE */
+@media (max-width: 768px) {
+
+    nav {
+        display: none;
+    }
 
     header {
-        flex-direction: column;
-        text-align: center;
+        justify-content: space-between;
     }
 
-    header nav {
-        justify-content: center;
-    }
-
-    .hero {
-        padding: 50px 10px;
+    .hero h1 {
+        font-size: 22px;
     }
 
     .hero img {
         width: 120px;
         height: 120px;
     }
-
-    .section {
-        padding: 40px 15px;
-    }
-
-    .project-card {
-        width: 100%;
-    }
 }
 
+@media (max-width: 480px) {
+    section {
+        padding: 50px 15px;
+    }
+}
 </style>
 </head>
 
 <body>
 
 <header>
-    <h2 class="logo">Portofolio</h2>
-    <nav>
+    <div class="logo">Portofolio</div>
+
+    <nav id="nav">
         <a href="#home">Home</a>
         <a href="#about">Tentang</a>
         <a href="#skills">Skill</a>
         <a href="#projects">Projek</a>
         <a href="#contact">Kontak</a>
     </nav>
-    <button id="darkMode">🌙</button>
+
+    <button onclick="toggleDark()">🌙</button>
 </header>
 
-<section id="home" class="hero">
-    <img src="profil.jpeg" alt="Profil">
+<!-- HERO -->
+<section class="hero" id="home">
+    <img src="foto/foto profil.jpeg" alt="profil">
     <h1>Halo, Saya <span>Zaky</span></h1>
-    <p>Web Developer</p>
+    <p>Web Developer | Student</p>
 </section>
 
-<section id="about" class="section reveal">
+<!-- ABOUT -->
+<section id="about" class="reveal">
     <h2>Tentang Saya</h2>
-    <p>
-        Saya adalah pelajar SMK yang tertarik pada pengembangan website,
-        khususnya HTML, CSS, PHP, dan JavaScript.
-    </p>
+    <p>Saya adalah pelajar SMK yang fokus belajar Web Development (HTML, CSS, JS, PHP).</p>
 </section>
 
-<section id="skills" class="section reveal">
-    <h2>Keahlian</h2>
+<!-- SKILLS -->
+<section id="skills" class="reveal">
+    <h2>Skill</h2>
 
-    <div class="skill">
-        <span>HTML</span>
-        <div class="bar"><div class="fill" data-skill="90"></div></div>
-    </div>
+    <div class="skills">
 
-    <div class="skill">
-        <span>CSS</span>
-        <div class="bar"><div class="fill" data-skill="85"></div></div>
-    </div>
-
-    <div class="skill">
-        <span>JavaScript</span>
-        <div class="bar"><div class="fill" data-skill="50"></div></div>
-    </div>
-
-    <div class="skill">
-        <span>PHP</span>
-        <div class="bar"><div class="fill" data-skill="50"></div></div>
-    </div>
-</section>
-
-<section id="projects" class="section reveal">
-    <h2>Projek</h2>
-
-    <div class="projects">
-        <div class="project-card">
-            <h3>Website Sekolah</h3>
-            <p>CRUD data siswa berbasis web</p>
+        <div class="skill">
+            <span>HTML</span>
+            <div class="bar"><div class="fill" data="90"></div></div>
         </div>
 
-        <div class="project-card">
-            <h3>Website Travel</h3>
+        <div class="skill">
+            <span>CSS</span>
+            <div class="bar"><div class="fill" data="85"></div></div>
+        </div>
+
+        <div class="skill">
+            <span>JavaScript</span>
+            <div class="bar"><div class="fill" data="60"></div></div>
+        </div>
+
+        <div class="skill">
+            <span>PHP</span>
+            <div class="bar"><div class="fill" data="55"></div></div>
+        </div>
+
+    </div>
+</section>
+
+<!-- PROJECT -->
+<section id="projects" class="reveal">
+    <h2>Project</h2>
+
+    <div class="projects">
+
+        <div class="card">
+            <h3>Website Sekolah</h3>
+            <p>CRUD data siswa</p>
+        </div>
+
+        <div class="card">
+            <h3>Travel Website</h3>
             <p>Landing page wisata</p>
         </div>
 
-        <div class="project-card">
+        <div class="card">
             <h3>Kas Kelas</h3>
-            <p>Sistem manajemen kas kelas</p>
+            <p>Manajemen keuangan kelas</p>
         </div>
 
-        <div class="project-card">
-            <h3>Manajemen Keuangan Jualan</h3>
-            <p>Sistem manajemen keuangan toko</p>
+        <div class="card">
+            <h3>Finance App</h3>
+            <p>Sistem keuangan sederhana</p>
         </div>
+
     </div>
 </section>
 
-<section id="contact" class="section reveal">
+<!-- CONTACT -->
+<section id="contact" class="reveal contact">
     <h2>Kontak</h2>
     <p>Email: zaky@email.com</p>
     <p>WhatsApp: 08xxxxxxxx</p>
 </section>
 
 <footer>
-    <p>© 2025 Zaky. All rights reserved.</p>
+    © 2025 Zaky Portfolio
 </footer>
 
 <script>
 // DARK MODE
-const darkBtn = document.getElementById("darkMode");
-darkBtn.onclick = () => {
+function toggleDark(){
     document.body.classList.toggle("dark");
-};
+}
 
-// SCROLL REVEAL
+// REVEAL
 window.addEventListener("scroll", () => {
     document.querySelectorAll(".reveal").forEach(el => {
-        const top = el.getBoundingClientRect().top;
-        if (top < window.innerHeight - 100) {
+        if(el.getBoundingClientRect().top < window.innerHeight - 80){
             el.classList.add("active");
         }
     });
 });
 
-// SKILL BAR ANIMATION
+// SKILL BAR
 window.addEventListener("scroll", () => {
-    document.querySelectorAll(".fill").forEach(bar => {
-        const top = bar.getBoundingClientRect().top;
-        if (top < window.innerHeight) {
-            bar.style.width = bar.dataset.skill + "%";
+    document.querySelectorAll(".fill").forEach(el => {
+        if(el.getBoundingClientRect().top < window.innerHeight){
+            el.style.width = el.getAttribute("data") + "%";
         }
     });
 });
