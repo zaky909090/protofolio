@@ -6,361 +6,426 @@
 <title>Portofolio | Zaky</title>
 
 <style>
-:root {
-    --bg: #f4f7fb;
-    --text: #222;
-    --card: #fff;
-    --primary: #4f46e5;
-    --accent: #00c6ff;
-    --dark: #0f0f0f;
-    --dark-card: #1c1c1c;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+    scroll-behavior:smooth;
 }
 
-/* RESET */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Segoe UI", sans-serif;
-    scroll-behavior: smooth;
+body{
+    background:#f4f7fc;
+    color:#333;
+    transition:.4s;
 }
 
-body {
-    background: var(--bg);
-    color: var(--text);
-    transition: 0.3s;
-}
-
-body.dark {
-    background: var(--dark);
-    color: #eee;
+body.dark{
+    background:#121212;
+    color:#eee;
 }
 
 /* HEADER */
-header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background: rgba(0,0,0,0.85);
-    backdrop-filter: blur(10px);
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 14px 20px;
-    z-index: 1000;
+header{
+    position:fixed;
+    top:0;
+    width:100%;
+    padding:15px 8%;
+    background:rgba(0,0,0,.85);
+    backdrop-filter:blur(10px);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    z-index:1000;
 }
 
-.logo {
-    font-weight: bold;
+.logo{
+    color:white;
+    font-size:24px;
+    font-weight:bold;
 }
 
-/* NAV */
-nav {
-    display: flex;
-    gap: 18px;
+nav a{
+    color:white;
+    text-decoration:none;
+    margin:0 10px;
+    transition:.3s;
 }
 
-nav a {
-    color: white;
-    text-decoration: none;
-    font-size: 14px;
-    position: relative;
+nav a:hover{
+    color:#00c6ff;
 }
 
-nav a::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -4px;
-    width: 0;
-    height: 2px;
-    background: var(--accent);
-    transition: 0.3s;
-}
-
-nav a:hover::after {
-    width: 100%;
-}
-
-/* BUTTON */
-button {
-    background: var(--primary);
-    color: white;
-    border: none;
-    padding: 7px 10px;
-    border-radius: 8px;
-    cursor: pointer;
+#darkMode{
+    padding:8px 12px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
 }
 
 /* HERO */
-.hero {
-    margin-top: 80px;
-    min-height: 90vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 20px;
-    background: linear-gradient(135deg, var(--primary), var(--accent));
-    color: white;
+.hero{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:white;
+    background:linear-gradient(135deg,#007bff,#00c6ff);
+    padding:20px;
 }
 
-.hero img {
-    width: 150px;
-    height: 150px;
-    border-radius: 18px;
-    border: 4px solid white;
-    object-fit: cover;
-    margin-bottom: 15px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+.hero img{
+    width:180px;
+    height:180px;
+    border-radius:50%;
+    object-fit:cover;
+    border:5px solid white;
+    box-shadow:0 10px 30px rgba(0,0,0,.2);
 }
 
-.hero h1 {
-    font-size: 30px;
+.hero h1{
+    margin-top:20px;
+    font-size:45px;
 }
 
-.hero span {
-    color: yellow;
+.hero span{
+    color:yellow;
 }
 
-.hero p {
-    opacity: 0.9;
+.hero h3{
+    height:35px;
+    margin:10px 0;
+}
+
+.hero p{
+    max-width:600px;
+}
+
+.btn{
+    display:inline-block;
+    margin-top:15px;
+    padding:12px 20px;
+    border-radius:30px;
+    text-decoration:none;
+    background:white;
+    color:#007bff;
+    font-weight:bold;
+    transition:.3s;
+    margin-left:5px;
+    margin-right:5px;
+}
+
+.btn:hover{
+    transform:translateY(-5px);
 }
 
 /* SECTION */
-section {
-    padding: 80px 20px;
-    text-align: center;
+.section{
+    padding:90px 10%;
+    text-align:center;
 }
 
-h2 {
-    margin-bottom: 25px;
-    font-size: 26px;
+.section h2{
+    margin-bottom:20px;
+    font-size:35px;
+}
+
+/* ABOUT */
+.about-box{
+    max-width:700px;
+    margin:auto;
+    line-height:1.8;
 }
 
 /* SKILLS */
-.skills {
-    max-width: 650px;
-    margin: auto;
+.skill{
+    max-width:700px;
+    margin:20px auto;
+    text-align:left;
 }
 
-.skill {
-    margin: 18px 0;
-    text-align: left;
+.skill-name{
+    margin-bottom:8px;
 }
 
-.bar {
-    background: #ddd;
-    height: 12px;
-    border-radius: 20px;
-    overflow: hidden;
+.bar{
+    background:#ddd;
+    height:14px;
+    border-radius:10px;
+    overflow:hidden;
 }
 
-.fill {
-    height: 100%;
-    width: 0;
-    background: linear-gradient(90deg, var(--primary), var(--accent));
-    transition: 1.2s ease;
+.fill{
+    height:100%;
+    width:0;
+    background:linear-gradient(90deg,#007bff,#00c6ff);
+    transition:1.5s;
 }
 
 /* PROJECT */
-.projects {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-    gap: 18px;
-    max-width: 1000px;
-    margin: auto;
+.projects{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
 }
 
-.card {
-    background: var(--card);
-    padding: 20px;
-    border-radius: 14px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-    transition: 0.3s;
+.project-card{
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+    transition:.3s;
 }
 
-.card:hover {
-    transform: translateY(-6px);
+.project-card:hover{
+    transform:translateY(-10px);
 }
 
-body.dark .card {
-    background: var(--dark-card);
+body.dark .project-card{
+    background:#1f1f1f;
+}
+
+.project-card h3{
+    margin-bottom:10px;
 }
 
 /* CONTACT */
-.contact {
-    max-width: 500px;
-    margin: auto;
-}
-
-/* ANIMATION */
-.reveal {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: 0.8s ease;
-}
-
-.reveal.active {
-    opacity: 1;
-    transform: translateY(0);
+.contact-links a{
+    display:inline-block;
+    margin:10px;
+    padding:12px 20px;
+    text-decoration:none;
+    border-radius:30px;
+    background:#007bff;
+    color:white;
 }
 
 /* FOOTER */
-footer {
-    background: #111;
-    color: white;
-    text-align: center;
-    padding: 18px;
+footer{
+    background:#111;
+    color:white;
+    text-align:center;
+    padding:20px;
 }
 
-/* MOBILE */
-@media (max-width: 768px) {
+/* REVEAL */
+.reveal{
+    opacity:0;
+    transform:translateY(50px);
+    transition:.8s;
+}
 
-    nav {
-        display: none;
+.reveal.active{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+
+    header{
+        flex-direction:column;
+        gap:10px;
     }
 
-    .hero h1 {
-        font-size: 24px;
+    nav{
+        text-align:center;
     }
 
-    .hero img {
-        width: 120px;
-        height: 120px;
+    .hero h1{
+        font-size:32px;
     }
+
+    .section{
+        padding:80px 5%;
+    }
+
 }
 </style>
 </head>
-
 <body>
 
 <header>
-    <div class="logo">Zaky Portfolio</div>
+    <div class="logo">Zaky</div>
 
     <nav>
         <a href="#home">Home</a>
         <a href="#about">Tentang</a>
         <a href="#skills">Skill</a>
-        <a href="#projects">Project</a>
+        <a href="#projects">Projek</a>
         <a href="#contact">Kontak</a>
     </nav>
 
-    <button onclick="toggleDark()">🌙</button>
+    <button id="darkMode">🌙</button>
 </header>
 
 <!-- HERO -->
-<section class="hero" id="home">
-    <img src="foto/foto profil.jpeg" alt="">
+<section id="home" class="hero">
+    <img src="foto/foto profil.jpeg" alt="Foto Profil">
+
     <h1>Halo, Saya <span>Zaky</span></h1>
-    <p>Web Developer | Student</p>
+
+    <h3 id="typing"></h3>
+
+    <p>
+        Pelajar SMK yang tertarik pada pengembangan website
+        menggunakan HTML, CSS, JavaScript dan PHP.
+    </p>
+
+    <div>
+        <a href="#projects" class="btn">Lihat Projek</a>
+        <a href="#" class="btn">Download CV</a>
+    </div>
 </section>
 
 <!-- ABOUT -->
-<section id="about" class="reveal">
+<section id="about" class="section reveal">
     <h2>Tentang Saya</h2>
-    <p>
-        Saya adalah pelajar SMK yang fokus belajar Web Development,
-        suka membuat website modern dan responsive.
-    </p>
+
+    <div class="about-box">
+        Saya adalah seorang pelajar SMK yang memiliki minat
+        dalam dunia pemrograman dan pengembangan website.
+        Saya senang membuat website modern, responsif,
+        dan terus belajar teknologi baru untuk meningkatkan kemampuan.
+    </div>
 </section>
 
 <!-- SKILLS -->
-<section id="skills" class="reveal">
-    <h2>Skill</h2>
+<section id="skills" class="section reveal">
+    <h2>Keahlian</h2>
 
-    <div class="skills">
-
-        <div class="skill">
-            <span>HTML</span>
-            <div class="bar"><div class="fill" data="90"></div></div>
+    <div class="skill">
+        <div class="skill-name">HTML - 90%</div>
+        <div class="bar">
+            <div class="fill" data-skill="90"></div>
         </div>
+    </div>
 
-        <div class="skill">
-            <span>CSS</span>
-            <div class="bar"><div class="fill" data="85"></div></div>
+    <div class="skill">
+        <div class="skill-name">CSS - 85%</div>
+        <div class="bar">
+            <div class="fill" data-skill="85"></div>
         </div>
+    </div>
 
-        <div class="skill">
-            <span>JavaScript</span>
-            <div class="bar"><div class="fill" data="65"></div></div>
+    <div class="skill">
+        <div class="skill-name">JavaScript - 60%</div>
+        <div class="bar">
+            <div class="fill" data-skill="60"></div>
         </div>
+    </div>
 
-        <div class="skill">
-            <span>PHP</span>
-            <div class="bar"><div class="fill" data="60"></div></div>
+    <div class="skill">
+        <div class="skill-name">PHP - 65%</div>
+        <div class="bar">
+            <div class="fill" data-skill="65"></div>
         </div>
-
     </div>
 </section>
 
 <!-- PROJECT -->
-<section id="projects" class="reveal">
-    <h2>Project</h2>
+<section id="projects" class="section reveal">
+    <h2>Projek Saya</h2>
 
     <div class="projects">
 
-        <div class="card">
-            <h3>Website Sekolah</h3>
-            <p>CRUD data siswa</p>
-        </div>
-
-        <div class="card">
-            <h3>Travel Website</h3>
-            <p>Landing page modern</p>
-        </div>
-
-        <div class="card">
+        <div class="project-card">
             <h3>Kas Kelas</h3>
-            <p>Manajemen keuangan</p>
+            <p>Sistem manajemen kas kelas berbasis web.</p>
         </div>
 
-        <div class="card">
-            <h3>Finance App</h3>
-            <p>Sistem sederhana</p>
+        <div class="project-card">
+            <h3>Website Sekolah</h3>
+            <p>CRUD data siswa dan informasi sekolah.</p>
+        </div>
+
+        <div class="project-card">
+            <h3>Website Travel</h3>
+            <p>Landing page promosi tempat wisata.</p>
+        </div>
+
+        <div class="project-card">
+            <h3>Keuangan Jualan</h3>
+            <p>Aplikasi pencatatan pemasukan dan pengeluaran.</p>
+        </div>
+
+        <div class="project-card">
+            <h3>Kado Ulang Tahun</h3>
+            <p>Website ucapan ulang tahun interaktif.</p>
+        </div>
+
+        <div class="project-card">
+            <h3>Portofolio</h3>
+            <p>Website portofolio pribadi responsif.</p>
         </div>
 
     </div>
 </section>
 
 <!-- CONTACT -->
-<section id="contact" class="reveal contact">
+<section id="contact" class="section reveal">
     <h2>Kontak</h2>
-    <p>Email: zaky@email.com</p>
-    <p>WhatsApp: 08xxxxxxxx</p>
+
+    <p>Email : zaky@email.com</p>
+
+    <div class="contact-links">
+        <a href="https://github.com/zaky909090" target="_blank">
+            GitHub
+        </a>
+
+        <a href="https://wa.me/6281234567890" target="_blank">
+            WhatsApp
+        </a>
+    </div>
 </section>
 
 <footer>
-    © 2025 Zaky Portfolio
+    © 2026 Zaky | All Rights Reserved
 </footer>
 
 <script>
-
 // DARK MODE
-function toggleDark(){
+document.getElementById("darkMode").onclick = () =>{
     document.body.classList.toggle("dark");
-}
+};
 
-// REVEAL ANIMATION
-window.addEventListener("scroll", () => {
-    document.querySelectorAll(".reveal").forEach(el => {
-        if(el.getBoundingClientRect().top < window.innerHeight - 80){
+// TYPING EFFECT
+const text = "Web Developer";
+let i = 0;
+
+function typing(){
+    if(i < text.length){
+        document.getElementById("typing").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typing,100);
+    }
+}
+typing();
+
+// REVEAL
+window.addEventListener("scroll",()=>{
+
+    document.querySelectorAll(".reveal").forEach(el=>{
+
+        const top = el.getBoundingClientRect().top;
+
+        if(top < window.innerHeight - 100){
             el.classList.add("active");
         }
     });
-});
 
-// SKILL BAR
-window.addEventListener("scroll", () => {
-    document.querySelectorAll(".fill").forEach(el => {
-        if(el.getBoundingClientRect().top < window.innerHeight){
-            el.style.width = el.getAttribute("data") + "%";
+    document.querySelectorAll(".fill").forEach(bar=>{
+
+        const top = bar.getBoundingClientRect().top;
+
+        if(top < window.innerHeight){
+            bar.style.width = bar.dataset.skill + "%";
         }
     });
-});
 
+});
 </script>
 
 </body>
